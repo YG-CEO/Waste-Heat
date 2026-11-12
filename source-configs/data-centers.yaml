@@ -1,0 +1,101 @@
+schemaVersion: 1
+dataStatus: estimated
+units:
+  annualHeatAvailable: MWh/year
+  avoidedCO2: tonnes/year
+  monthlyProfileIndex: "relative index (0-100)"
+  recoverablePotential: percent
+  heatStreamShare: percent
+
+source:
+  id: dataCenters
+  name: Data centers
+  annualHeatAvailable: 10998509
+  quarterlyHeatAvailableRange:
+    Q1: { lower: 2749627.298464, upper: 5499254.596929 }
+    Q2: { lower: 2749627.298464, upper: 5499254.596929 }
+    Q3: { lower: 2749627.298464, upper: 5499254.596929 }
+    Q4: { lower: 2749627.298464, upper: 5499254.596929 }
+  assumptions:
+    dataCenterCount: 296
+    workbookBuildingCount: 377
+    loadFactor:
+      lower: 0.25
+      upper: 0.5
+    # Per 2025 update.
+    powerUsageEffectiveness: 1.56
+    operatingHoursPerYear: 8760
+    annualHeatRangeMWh:
+      lower: 10998509
+      upper: 21997018
+    quarterlyHeatShare:
+      Q1: 0.25
+      Q2: 0.25
+      Q3: 0.25
+      Q4: 0.25
+    annualHeatPerHouseholdMWh: 15.8818
+  methodologyProcedures:
+    - number: 1
+      totalPowerSource: Data Center Map
+      grossBuildingSizeSource: Irrelevant
+      description: "Use reported total power; estimate annual waste heat at 25%-50% of total power."
+    - number: 2
+      totalPowerSource: CloudScene
+      grossBuildingSizeSource: Irrelevant
+      description: "Use reported total power; estimate annual waste heat at 25%-50% of total power."
+    - number: 3
+      totalPowerSource: None
+      grossBuildingSizeSource: Data Center Map
+      description: "Estimate total power from gross building size using the area-to-power correlation; estimate annual waste heat at 25%-50% of total power."
+    - number: 4
+      totalPowerSource: None
+      grossBuildingSizeSource: CloudScene
+      description: "Estimate total power from gross building size using the area-to-power correlation; estimate annual waste heat at 25%-50% of total power."
+    - number: 5
+      totalPowerSource: None
+      grossBuildingSizeSource: Open Database of Buildings (ODB)
+      description: "Estimate total power from gross building size using the area-to-power correlation; estimate annual waste heat at 25%-50% of total power."
+    - number: 6
+      totalPowerSource: None
+      grossBuildingSizeSource: Google Earth
+      description: "Estimate total power from gross building size using the area-to-power correlation; estimate annual waste heat at 25%-50% of total power."
+  populationSteps:
+    - number: 1
+      description: "Identify a data center in the Data Center Map dataset; use the May 2025 update."
+      source: "https://041gc.sharepoint.com/:x:/r/sites/msteams_4844ee_797480/Shared%20Documents/2.%20Community%20Waste%20Heat%20Source%20Assessment/Data%20Centres/datacentermap_May2025%20update_KG.xlsm?d=w48ad59113d32449dbe6a12c932b73c6e&csf=1&web=1&e=gYrt0j"
+    - number: 2
+      description: "Copy the relevant location information from the Data Center Map dataset into columns A through J of the Data tab."
+    - number: 3
+      description: "Copy the relevant energy and area information from the Data Center Map dataset into columns K through O of the Data tab."
+    - number: 4
+      description: "Highlight the processed row in the Data Center Map dataset green."
+    - number: 5
+      description: "Check whether the same data center exists in the CloudScene dataset. Names and addresses can differ; use Google Maps to confirm potential matches."
+      source: "https://041gc.sharepoint.com/:x:/r/sites/msteams_4844ee_797480/Shared%20Documents/2.%20Community%20Waste%20Heat%20Source%20Assessment/Data%20Centres/Cloudscene%20data%20centers.xlsx?d=w9771d7c1edff455e8f7cbccf693c9a89&csf=1&web=1&e=7ghbf3"
+    - number: 6
+      description: "Copy the relevant energy and area information from the CloudScene dataset into columns P through T of the Data tab."
+    - number: 7
+      description: "Highlight the processed row in the CloudScene dataset green."
+    - number: 8
+      description: "Repeat steps 1 through 7 until all data centers in both datasets are accounted for."
+    - number: 9
+      description: "Where calculated columns W through Z show No Data and annual waste heat cannot be calculated, enter area in column U from ODB or column V from Open Street Map, if available."
+    - number: 10
+      description: "Prioritize data in this order: Data Center Map, CloudScene, ODB, then Open Street Maps."
+    - number: 11
+      description: "When two data centers share a building, manually divide the total building area between them; the workbook gives Thrive CA - Ottawa and Rogers Ottawa as an example."
+  recoverablePotential: 74
+  equivalentHomes: 692523
+  avoidedCO2: 4160
+  monthlyProfileIndex: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+  heatStreams:
+    - name: Unspecified data center heat
+      share: 100
+  note: "Data centers calculations.xlsx estimates 10,998,509-21,997,018 MWh/year from 296 populated calculation rows (the sheet header lists 377 total buildings); the lower bound is used here. Annual heat is estimated as total power x load factor x 8,760 hours / PUE. Matching supply temperature to nearby heating networks is key."
+
+caveat: >-
+  Annual heat, household equivalents, and the flat monthly profile are derived from the workbook estimates. The
+  recoverable-potential percentage and avoided CO2 value remain illustrative because the workbook does not calculate
+  them. Heat stream shares are shown as one unallocated total because the workbook does not disaggregate streams.
+  Validate values and assumptions against local measurements and sources before planning or investment decisions.
+  Monthly profile values are relative display indices, not measured monthly energy quantities.

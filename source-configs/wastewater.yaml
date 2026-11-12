@@ -1,0 +1,91 @@
+schemaVersion: 1
+dataStatus: estimated
+units:
+  annualHeatAvailable: MWh/year
+  annualEquivalentHomes: homes
+  provinceAnnualHeat: MWh/year
+
+workbook:
+  file: "Wastewaster calculations.xlsx"
+  sheet: "Rapport ID_ID Reports"
+  firstDataRow: 130
+  lastDataRow: 2505
+  facilityRecords: 2376
+  includedFacilities: 1081
+  inclusionRule: "Workbook In Analysis filter; modeled annual heat is positive for included facilities"
+  annualHeatColumn: "AF (Total Annual Heat Capacity Q (MWh))"
+  equivalentHomesColumn: "AG (Household Equivalents)"
+
+source:
+  id: wastewater
+  name: Wastewater
+  annualHeatAvailable: 18067372.706
+  quarterlyHeatAvailableRange:
+    Q1: { lower: 3344341.159967, upper: 3344341.159967 }
+    Q2: { lower: 3344341.159967, upper: 3344341.159967 }
+    Q3: { lower: 5840188.571078, upper: 5840188.571078 }
+    Q4: { lower: 5538501.814603, upper: 5538501.814603 }
+  annualEquivalentHomes: 868780
+  facilityCount: 2376
+  calculatedFacilityCount: 1081
+  provincesAndTerritories:
+    - Newfoundland and Labrador
+    - Nova Scotia
+    - New Brunswick
+    - Prince Edward Island
+    - Ontario
+    - Manitoba
+    - Saskatchewan
+    - Alberta
+    - British Columbia
+    - Quebec
+    - Yukon
+  annualHeatByProvince:
+    - name: Ontario
+      annualHeatMWh: 6548992.071
+      calculatedFacilityCount: 306
+      facilityRecords: 498
+    - name: Quebec
+      annualHeatMWh: 5877635.523
+      calculatedFacilityCount: 360
+      facilityRecords: 747
+    - name: British Columbia
+      annualHeatMWh: 3282149.595
+      calculatedFacilityCount: 81
+      facilityRecords: 188
+    - name: Alberta
+      annualHeatMWh: 906279.922
+      calculatedFacilityCount: 85
+      facilityRecords: 141
+    - name: Nova Scotia
+      annualHeatMWh: 480606.752
+      calculatedFacilityCount: 62
+      facilityRecords: 141
+    - name: Manitoba
+      annualHeatMWh: 280326.597
+      calculatedFacilityCount: 50
+      facilityRecords: 188
+    - name: New Brunswick
+      annualHeatMWh: 279593.145
+      calculatedFacilityCount: 60
+      facilityRecords: 130
+    - name: Newfoundland and Labrador
+      annualHeatMWh: 201883.771
+      calculatedFacilityCount: 39
+      facilityRecords: 216
+    - name: Saskatchewan
+      annualHeatMWh: 170307.550
+      calculatedFacilityCount: 29
+      facilityRecords: 94
+    - name: Prince Edward Island
+      annualHeatMWh: 36240.334
+      calculatedFacilityCount: 6
+      facilityRecords: 29
+    - name: Yukon
+      annualHeatMWh: 3357.446
+      calculatedFacilityCount: 3
+      facilityRecords: 4
+  note: >-
+    Modeled annual heat capacity is summed from the workbook's MWh output for 1,081 included facilities out of 2,376
+    records. The workbook applies its seasonal temperature-difference assumptions and 90% efficiency. Household
+    equivalents are summed from the workbook's per-facility estimates. These are modeled estimates, not metered values.

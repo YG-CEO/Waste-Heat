@@ -1,0 +1,154 @@
+schemaVersion: 1
+dataStatus: estimated
+units:
+  annualHeatAvailable: MWh/year
+  annualHeatGJ: GJ/year
+  heatStreamShare: percent
+  relativeHumidityAt1500LST: "fraction (e.g. 0.393 = 39.3%)"
+  dailyAverageTemperature: degC
+  airTemperature: degC
+  saturationVaporPressure: Pa
+
+calculations:
+  saturationVaporPressure:
+    formula: "e_s = C1 * exp((A1 * t) / (B1 + t))"
+    constants:
+      A1: 17.625
+      B1: 243.04
+      C1: 610.94
+    inputTemperature: degC
+    outputPressure: Pa
+
+source:
+  id: metroStations
+  name: Metro stations
+  workbook: MetroStationCalcs.xlsx
+  transitSystems:
+    - Edmonton
+    - Montreal
+    - Toronto
+    - Calgary
+    - Ottawa
+    - Vancouver
+  captureMonthsBySystem:
+    Edmonton: [May, June, July, August, September, October]
+    Montreal: [April, May, June, July, August, September, October]
+    Toronto: [April, May, June, July, August, September, October, November]
+    Calgary: [May, June, July, August, September]
+    Ottawa: [April, May, June, July, August, September, October]
+    Vancouver: [March, April, May, June, July, August, September, October, November]
+  monthlyConditionsBySystem:
+    Edmonton:
+      - { month: May, relativeHumidityAt1500LST: 0.393, dailyAverageTemperature: 11.6 }
+      - { month: June, relativeHumidityAt1500LST: 0.478, dailyAverageTemperature: 15.6 }
+      - { month: July, relativeHumidityAt1500LST: 0.506, dailyAverageTemperature: 18.1 }
+      - { month: August, relativeHumidityAt1500LST: 0.493, dailyAverageTemperature: 17 }
+      - { month: September, relativeHumidityAt1500LST: 0.482, dailyAverageTemperature: 11.9 }
+      - { month: October, relativeHumidityAt1500LST: 0.51, dailyAverageTemperature: 5 }
+    Montreal:
+      - { month: April, relativeHumidityAt1500LST: 0.507, dailyAverageTemperature: 6.2 }
+      - { month: May, relativeHumidityAt1500LST: 0.498, dailyAverageTemperature: 13.9 }
+      - { month: June, relativeHumidityAt1500LST: 0.536, dailyAverageTemperature: 19 }
+      - { month: July, relativeHumidityAt1500LST: 0.555, dailyAverageTemperature: 21.7 }
+      - { month: August, relativeHumidityAt1500LST: 0.561, dailyAverageTemperature: 20.6 }
+      - { month: September, relativeHumidityAt1500LST: 0.582, dailyAverageTemperature: 16 }
+      - { month: October, relativeHumidityAt1500LST: 0.614, dailyAverageTemperature: 8.9 }
+    Toronto:
+      - { month: April, relativeHumidityAt1500LST: 0.534, dailyAverageTemperature: 7.8 }
+      - { month: May, relativeHumidityAt1500LST: 0.531, dailyAverageTemperature: 14.5 }
+      - { month: June, relativeHumidityAt1500LST: 0.552, dailyAverageTemperature: 19.8 }
+      - { month: July, relativeHumidityAt1500LST: 0.543, dailyAverageTemperature: 22.5 }
+      - { month: August, relativeHumidityAt1500LST: 0.567, dailyAverageTemperature: 21.9 }
+      - { month: September, relativeHumidityAt1500LST: 0.596, dailyAverageTemperature: 17.9 }
+      - { month: October, relativeHumidityAt1500LST: 0.65, dailyAverageTemperature: 11.2 }
+      - { month: November, relativeHumidityAt1500LST: 0.671, dailyAverageTemperature: 5.2 }
+    Calgary:
+      - { month: May, relativeHumidityAt1500LST: 0.438, dailyAverageTemperature: 9.9 }
+      - { month: June, relativeHumidityAt1500LST: 0.492, dailyAverageTemperature: 13.7 }
+      - { month: July, relativeHumidityAt1500LST: 0.468, dailyAverageTemperature: 16.9 }
+      - { month: August, relativeHumidityAt1500LST: 0.443, dailyAverageTemperature: 16.2 }
+      - { month: September, relativeHumidityAt1500LST: 0.443, dailyAverageTemperature: 11.5 }
+    Ottawa:
+      - { month: April, relativeHumidityAt1500LST: 0.512, dailyAverageTemperature: 6.2 }
+      - { month: May, relativeHumidityAt1500LST: 0.51, dailyAverageTemperature: 13.8 }
+      - { month: June, relativeHumidityAt1500LST: 0.551, dailyAverageTemperature: 18.8 }
+      - { month: July, relativeHumidityAt1500LST: 0.543, dailyAverageTemperature: 21.3 }
+      - { month: August, relativeHumidityAt1500LST: 0.557, dailyAverageTemperature: 20.1 }
+      - { month: September, relativeHumidityAt1500LST: 0.581, dailyAverageTemperature: 15.6 }
+      - { month: October, relativeHumidityAt1500LST: 0.639, dailyAverageTemperature: 8.8 }
+    Vancouver:
+      - { month: March, relativeHumidityAt1500LST: 0.701, dailyAverageTemperature: 6.7 }
+      - { month: April, relativeHumidityAt1500LST: 0.657, dailyAverageTemperature: 9.4 }
+      - { month: May, relativeHumidityAt1500LST: 0.637, dailyAverageTemperature: 13 }
+      - { month: June, relativeHumidityAt1500LST: 0.62, dailyAverageTemperature: 15.8 }
+      - { month: July, relativeHumidityAt1500LST: 0.612, dailyAverageTemperature: 18.2 }
+      - { month: August, relativeHumidityAt1500LST: 0.622, dailyAverageTemperature: 18.2 }
+      - { month: September, relativeHumidityAt1500LST: 0.679, dailyAverageTemperature: 15.2 }
+      - { month: October, relativeHumidityAt1500LST: 0.762, dailyAverageTemperature: 10.3 }
+      - { month: November, relativeHumidityAt1500LST: 0.8, dailyAverageTemperature: 6.4 }
+  saturationVaporPressureBySystem:
+    Edmonton:
+      - { month: May, beforeTemperatureC: 21.6, afterTemperatureC: 16, beforePa: 2574.88, afterPa: 1814.62 }
+      - { month: June, beforeTemperatureC: 25.6, afterTemperatureC: 20, beforePa: 3276.63, afterPa: 2333.44 }
+      - { month: July, beforeTemperatureC: 28.1, afterTemperatureC: 22, beforePa: 3795.58, afterPa: 2638.55 }
+      - { month: August, beforeTemperatureC: 27, afterTemperatureC: 21, beforePa: 3559.01, afterPa: 2481.89 }
+      - { month: September, beforeTemperatureC: 21.9, afterTemperatureC: 16, beforePa: 2622.50, afterPa: 1814.62 }
+      - { month: October, beforeTemperatureC: 15, afterTemperatureC: 9, beforePa: 1701.98, afterPa: 1146.38 }
+    Montreal:
+      - { month: April, beforeTemperatureC: 16.2, afterTemperatureC: 10, beforePa: 1837.92, afterPa: 1226.02 }
+      - { month: May, beforeTemperatureC: 23.9, afterTemperatureC: 18, beforePa: 2960.23, afterPa: 2059.73 }
+      - { month: June, beforeTemperatureC: 29, afterTemperatureC: 23, beforePa: 3999.24, afterPa: 2803.81 }
+      - { month: July, beforeTemperatureC: 31.7, afterTemperatureC: 26, beforePa: 4668.55, afterPa: 3355.23 }
+      - { month: August, beforeTemperatureC: 30.6, afterTemperatureC: 25, beforePa: 4384.92, afterPa: 3161.74 }
+      - { month: September, beforeTemperatureC: 26, afterTemperatureC: 20, beforePa: 3355.23, afterPa: 2333.44 }
+      - { month: October, beforeTemperatureC: 18.9, afterTemperatureC: 13, beforePa: 2179.20, afterPa: 1495.00 }
+    Toronto:
+      - { month: April, beforeTemperatureC: 17.8, afterTemperatureC: 12, beforePa: 2033.98, afterPa: 1400.07 }
+      - { month: May, beforeTemperatureC: 24.5, afterTemperatureC: 19, beforePa: 3068.70, afterPa: 2192.84 }
+      - { month: June, beforeTemperatureC: 29.8, afterTemperatureC: 24, beforePa: 4188.21, afterPa: 2978.07 }
+      - { month: July, beforeTemperatureC: 32.5, afterTemperatureC: 27, beforePa: 4884.74, afterPa: 3559.01 }
+      - { month: August, beforeTemperatureC: 31.9, afterTemperatureC: 26, beforePa: 4721.80, afterPa: 3355.23 }
+      - { month: September, beforeTemperatureC: 27.9, afterTemperatureC: 22, beforePa: 3751.57, afterPa: 2638.55 }
+      - { month: October, beforeTemperatureC: 21.2, afterTemperatureC: 15, beforePa: 2512.55, afterPa: 1701.98 }
+      - { month: November, beforeTemperatureC: 15.2, afterTemperatureC: 9, beforePa: 1724.01, afterPa: 1146.38 }
+    Calgary:
+      - { month: May, beforeTemperatureC: 19.9, afterTemperatureC: 14, beforePa: 2319.03, afterPa: 1595.54 }
+      - { month: June, beforeTemperatureC: 23.7, afterTemperatureC: 18, beforePa: 2924.83, afterPa: 2059.73 }
+      - { month: July, beforeTemperatureC: 26.9, afterTemperatureC: 21, beforePa: 3538.16, afterPa: 2481.89 }
+      - { month: August, beforeTemperatureC: 26.2, afterTemperatureC: 20, beforePa: 3395.15, afterPa: 2333.44 }
+      - { month: September, beforeTemperatureC: 21.5, afterTemperatureC: 16, beforePa: 2559.17, afterPa: 1814.62 }
+    Ottawa:
+      - { month: April, beforeTemperatureC: 16.2, afterTemperatureC: 10, beforePa: 1837.92, afterPa: 1226.02 }
+      - { month: May, beforeTemperatureC: 23.8, afterTemperatureC: 18, beforePa: 2942.48, afterPa: 2059.73 }
+      - { month: June, beforeTemperatureC: 28.8, afterTemperatureC: 23, beforePa: 3953.17, afterPa: 2803.81 }
+      - { month: July, beforeTemperatureC: 31.3, afterTemperatureC: 25, beforePa: 4563.61, afterPa: 3161.74 }
+      - { month: August, beforeTemperatureC: 30.1, afterTemperatureC: 24, beforePa: 4261.05, afterPa: 2978.07 }
+      - { month: September, beforeTemperatureC: 25.6, afterTemperatureC: 20, beforePa: 3276.63, afterPa: 2333.44 }
+      - { month: October, beforeTemperatureC: 18.8, afterTemperatureC: 13, beforePa: 2165.63, afterPa: 1495.00 }
+    Vancouver:
+      - { month: March, beforeTemperatureC: 16.7, afterTemperatureC: 11, beforePa: 1897.32, afterPa: 1310.50 }
+      - { month: April, beforeTemperatureC: 19.4, afterTemperatureC: 13, beforePa: 2248.16, afterPa: 1495.00 }
+      - { month: May, beforeTemperatureC: 23, afterTemperatureC: 17, beforePa: 2803.81, afterPa: 1933.77 }
+      - { month: June, beforeTemperatureC: 25.8, afterTemperatureC: 20, beforePa: 3315.73, afterPa: 2333.44 }
+      - { month: July, beforeTemperatureC: 28.2, afterTemperatureC: 22, beforePa: 3817.75, afterPa: 2638.55 }
+      - { month: August, beforeTemperatureC: 28.2, afterTemperatureC: 22, beforePa: 3817.75, afterPa: 2638.55 }
+      - { month: September, beforeTemperatureC: 25.2, afterTemperatureC: 19, beforePa: 3199.64, afterPa: 2192.84 }
+      - { month: October, beforeTemperatureC: 20.3, afterTemperatureC: 14, beforePa: 2377.13, afterPa: 1595.54 }
+      - { month: November, beforeTemperatureC: 16.4, afterTemperatureC: 10, beforePa: 1861.48, afterPa: 1226.02 }
+  annualHeatAvailable: 7933
+  quarterlyHeatAvailableRange:
+    Q1: { lower: 202.160364, upper: 202.160364 }
+    Q2: { lower: 3042.992784, upper: 3042.992784 }
+    Q3: { lower: 3297.487800, upper: 3297.487800 }
+    Q4: { lower: 1390.014488, upper: 1390.014488 }
+  annualHeatGJ: 28557.56
+  heatStreams:
+    - name: Annual condenser heat (QH)
+      share: 100
+  note: "The workbook reports 7,932.66 MWh/year across six transit systems, rounded to 7,933 MWh. The workbook does not report equivalent homes, avoided CO2, or a monthly heat profile."
+
+caveat: >-
+  Annual heat is calculated from the Metro Calcs worksheet's Annual Heat Power column (Q, GJ) and converted at 3.6
+  GJ/MWh; it is a workbook calculation, not a metered measurement. The workbook provides system-specific capture
+  months and weather conditions but no monthly heat quantities, recoverable percentage, household equivalent, or
+  avoided CO2. Validate local operating assumptions before planning or investment decisions.

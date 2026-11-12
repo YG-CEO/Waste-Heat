@@ -1,0 +1,39 @@
+schemaVersion: 1
+dataStatus: estimated
+units:
+  annualHeatAvailable: MWh/year
+  avoidedCO2: tonnes/year
+  monthlyProfileIndex: "relative index (0-100)"
+  recoverablePotential: percent
+  heatStreamShare: percent
+
+source:
+  id: supermarkets
+  name: Supermarkets
+  workbook: supermarket calculations.xlsx
+  storeCount: 3176
+  annualHeatAvailable: 5701415
+  annualHeatRange:
+    lower: 5701415
+    upper: 16459828
+  quarterlyHeatAvailableRange:
+    Q1: { lower: 1140121.952789, upper: 3793147.778285 }
+    Q2: { lower: 1590037.917946, upper: 4305627.562555 }
+    Q3: { lower: 1738601.480339, upper: 4461355.386602 }
+    Q4: { lower: 1232653.869589, upper: 3899696.947811 }
+  equivalentHomes: 358991
+  equivalentHomesRange:
+    lower: 358991
+    upper: 1036396
+  monthlyProfileIndex: [66, 66, 66, 91, 91, 91, 100, 100, 100, 71, 71, 71]
+  heatStreams:
+    - name: Refrigeration waste heat
+      share: 100
+  note: "The Calculations worksheet sums quarterly excess heat after internal heating loads for 3,176 supermarket records. Household equivalents use 15.8818 MWh/year."
+
+caveat: >-
+  Annual heat and household equivalents are workbook estimates, not metered measurements. The monthly profile is derived
+  from the workbook's quarterly lower-bound excess-heat totals, divided evenly across months in each quarter and
+  normalized to the highest month; the index is not measured monthly energy. The workbook does not calculate avoided
+  CO2 or a technically recoverable percentage. Validate assumptions against local measurements before planning or
+  investment decisions.

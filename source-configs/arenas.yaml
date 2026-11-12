@@ -1,0 +1,66 @@
+schemaVersion: 1
+dataStatus: estimated
+units:
+  annualHeatAvailable: MWh/year
+  annualHeatRange: MWh/year
+  quarterlyHeatAvailable: MWh/quarter
+  annualEquivalentHomes: homes
+  monthlyProfileIndex: "relative index (0-100; peak quarter = 100)"
+  heatStreamShare: percent
+
+source:
+  id: arenas
+  name: Arenas
+  workbook: Arenas_Calculations_2026-08.xlsx
+  arenaCount: 2893
+  provincesAndTerritories: [QC, ON, NS, NL, NB, MB, SK, AB, BC, PE, TERR]
+  areaSourceCounts:
+    estimated: 1651
+    Open Database of Buildings: 1240
+    noData: 2
+  annualHeatAvailable: 1475171
+  annualHeatRange:
+    lower: 1475171
+    upper: 3328908
+  annualWasteHeatRange:
+    lower: 2676681
+    upper: 4606473
+  annualEquivalentHomes: 92884
+  annualEquivalentHomesRange:
+    lower: 92884
+    upper: 209605
+  totalWasteHeatEquivalentHomesRange:
+    lower: 168538
+    upper: 290047
+  quarterlyHeatAvailableRange:
+    Q1: { lower: 406410, upper: 1033097 }
+    Q2: { lower: 280729, upper: 637432 }
+    Q3: { lower: 211527, upper: 420446 }
+    Q4: { lower: 576505, upper: 1237933 }
+  monthlyProfileIndex: [70, 70, 70, 49, 49, 49, 37, 37, 37, 100, 100, 100]
+  assumptions:
+    annualHeatBasis: "Annual excess waste heat after internal arena heating load"
+    grossAnnualHeatBasis: "Total annual waste heat before internal arena heating load"
+    conversion: "3.6 GJ per MWh"
+    householdHeatDemandMWhPerYear: 15.8818
+    euiGJPerM2:
+      under5000m2:
+        lower: 1.05
+        upper: 1.18
+      over5000m2:
+        lower: 1.38
+        upper: 1.59
+    curlingArenaEuiReductionFactor: 0.6225
+  heatStreams:
+    - name: Arena refrigeration waste heat
+      share: 100
+  note: "The workbook estimates arena refrigeration waste heat from facility areas and EUI assumptions. Annual available heat is the lower-bound excess after internal heating demand; the range includes the workbook's upper-bound estimate."
+
+caveat: >-
+  These are modeled workbook estimates, not metered measurements. Annual excess heat is summed from the province and
+  territory sheets; two of the 2,893 records have no area-based heat estimate. Gross
+  waste heat before internal heating demand is provided separately. The workbook does not calculate avoided CO2 or a
+  technically recoverable percentage. The monthly profile is based on lower-bound quarterly excess-heat totals,
+  divided evenly among months in each quarter; the indices are not measured monthly energy quantities. The upper
+  annual estimate is calculated from quarterly excess-heat totals because the Newfoundland annual upper-bound formula
+  in the workbook references Nova Scotia data.
